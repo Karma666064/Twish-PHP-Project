@@ -7,20 +7,29 @@ if (isset($_GET['page'])) {
     switch ($_GET['page']) {
         case 'login':
             // auth();
+            showLoginPage();
             break;
         case 'register':
             // auth();
+            showloginPage();
             break;
-        case 'logout':
+        case 'home':
             // logout();
+            showHomePage();
             break;
-        case 'album':
+        case 'profile':
             // showAlbum();
+            showProfilePage();
+            break;
+        case 'friend':
+            // showFriend();
+            showFriendPage();
             break;
         default:
             // showHome();
+            showHomePage();
             break;
     }
-} 
-// else showHome();
+} else showHomePage();
+
 ?>

@@ -1,5 +1,5 @@
 <?php global $base_url; ?>
-<?php if ($js) echo '<script src="assets/'. $js .'" defer></script>' ?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -15,9 +15,9 @@
         <!-- Flaticon links -->
         <!-- <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
         <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'> -->
-
-        <!-- Appel le fichier js si on est sur la page login -->
         
+        <!-- Appel le fichier js si on est sur la page login -->
+        <?php if ($js) echo '<script src="assets/'. $js .'" defer></script>' ?>
 
         <title>Twish - <?= $title ?></title>
     </head>
@@ -30,13 +30,14 @@
                 <ul>
                     <li><a href="<?= $base_url ?>" <?php if ($title == 'Home') echo 'class="active-page"' ?>>Home</a></li>
                     <?php
-                        if ($_SESSION) echo "<li><a href=\"$base_url?page=profile\>Profile</a></li>";
-                        else echo "<li><a href=\"$base_url?page=login\">Login</a></li>";
+                        if ($_SESSION) {
+                            echo "<li><a href=\"$base_url?page=profile\>Profile</a></li>";
+                            echo "<li><a href=\"$base_url?page=friend\>Friend</a></li>";
+                            
+                        } else echo "<li><a href=\"$base_url?page=login\">Login</a></li>";
                     ?>
                     
                 </ul>
-
-                <!-- Affiche le bouton de deconnexion si on est connecter -->
             </nav>
         </header>
 
