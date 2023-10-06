@@ -6,30 +6,24 @@ require_once('autoload.php');
 if (isset($_GET['page'])) {
     switch ($_GET['page']) {
         case 'login':
-            // auth();
-            showLoginPage();
+            showAuth();
             break;
         case 'register':
-            // auth();
-            showloginPage();
+            showAuth();
             break;
         case 'home':
-            // logout();
-            showHomePage();
+            showHome();
             break;
         case 'profile':
-            // showAlbum();
-            showProfilePage();
+            showProfile();
             break;
         case 'friend':
-            // showFriend();
-            showFriendPage();
+            showFriend();
             break;
         default:
-            // showHome();
-            showHomePage();
+            showHome();
             break;
     }
-} else showHomePage();
+} else showHome();
 
 ?>
