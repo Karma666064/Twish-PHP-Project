@@ -16,6 +16,7 @@ require_once('templates/profilePage.php');
 require_once('templates/homePage.php');
 
 require_once('templates/sprites/postSprite.php');
+require_once('templates/sprites/friendSprite.php');
 
 require_once('controllers/authController.php');
 require_once('controllers/friendController.php');

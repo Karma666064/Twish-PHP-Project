@@ -9,6 +9,8 @@ function showFriendPage() {
 ?>
     <main>
         <h2>Friend</h2>
+
+        <?= showFriendSprite(); ?>
     </main>
 <?php 
     $content = ob_get_clean();
