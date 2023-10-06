@@ -5,17 +5,18 @@ global $base_url; $base_url = "http://localhost/twish";
 
 $GLOBALS['isConnected'] = $_SESSION && $_SESSION['user'];
 
-require_once('models/db.php');
+require_once('models/databaseModel.php');
 require_once('models/authModel.php');
-require_once('models/homeModel.php');
-require_once('models/finderModel.php');
+require_once('models/friendModel.php');
+require_once('models/msgModel.php');
 
 require_once('templates/loginPage.php');
-require_once('templates/albumPage.php');
+require_once('templates/friendPage.php');
+require_once('templates/profilePage.php');
 require_once('templates/homePage.php');
-require_once('templates/card_album.php');
 
 require_once('controllers/authController.php');
-require_once('controllers/albumController.php');
+require_once('controllers/friendController.php');
 require_once('controllers/homeController.php');
+require_once('controllers/profileController.php');
 ?>

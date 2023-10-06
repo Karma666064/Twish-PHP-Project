@@ -28,12 +28,15 @@
                 <h1>Twish</h1>
 
                 <ul>
-                    <li><a href="<?= $base_url ?>?page=login" <?php if ($title == 'Login') echo 'class="active-page"' ?>>Login</a></li>
                     <li><a href="<?= $base_url ?>" <?php if ($title == 'Home') echo 'class="active-page"' ?>>Home</a></li>
+                    <?php
+                        if ($_SESSION) echo "<li><a href=\"$base_url?page=profile\>Profile</a></li>";
+                        else echo "<li><a href=\"$base_url?page=login\">Login</a></li>";
+                    ?>
+                    
                 </ul>
 
                 <!-- Affiche le bouton de deconnexion si on est connecter -->
-                <?php if ($_SESSION) echo "<a href=\"$base_url?page=logout\"><i class=\"fi fi-ss-sign-out-alt\"></i></a>"; ?>
             </nav>
         </header>
 
