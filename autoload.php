@@ -1,7 +1,7 @@
 <?php
 session_start(); //Démarage de la session
 
-global $base_url; $base_url = "http://localhost/music_market";
+global $base_url; $base_url = "http://localhost/twish";
 
 $GLOBALS['isConnected'] = $_SESSION && $_SESSION['user'];
 
