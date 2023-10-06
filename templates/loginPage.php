@@ -38,6 +38,20 @@ function showLoginPage() {
 
             <form method="post">
                 <div>
+                    <p>Gender</p>
+
+                    <div>
+                        <label for="genderMan">Man</label>
+                        <input type="radio" name="gender" id="inputGenderMan" value="Man">
+                    </div>
+
+                    <div>
+                        <label for="genderWoman">Woman</label>
+                        <input type="radio" name="gender" id="inputGenderWoman" value="Woman">
+                    </div>
+                </div>
+
+                <div>
                     <label for="username">Username</label>
                     <input type="text" name="username" id="inputUsername" required>
                 </div>
@@ -45,6 +59,11 @@ function showLoginPage() {
                 <div>
                     <label for="mail">Mail</label>
                     <input type="email" name="mail" id="inputMail" required>
+                </div>
+
+                <div>
+                    <label for="birthday">Birthday</label>
+                    <input type="date" name="birthday" id="inputBirthday">
                 </div>
 
                 <div>
