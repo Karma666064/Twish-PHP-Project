@@ -12,8 +12,8 @@ function showHomePage() {
         
         <div class="separator"></div>
         
-        <section class="cards">
-            
+        <section class="Posts">
+            <?= showPostSprite(); ?>
         </section>
     </main>
 <?php 
