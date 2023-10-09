@@ -7,6 +7,7 @@ global $isConnected; $isConnected = $_SESSION && $_SESSION['user'];
 
 require_once('models/databaseModel.php');
 require_once('models/authModel.php');
+require_once('models/updateUserModel.php');
 // require_once('models/friendModel.php');
 // require_once('models/msgModel.php');
 

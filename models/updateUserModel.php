@@ -1,61 +1,49 @@
 <?php
-function updateUsernameUser ($idUser, $newUsername, $password) {
+function updateUsernameUser ($idUser, $newUsername) {
     global $pdo;
 
-    if (password_verify(password_hash($password, PASSWORD_DEFAULT), $_SESSION['user']['password'])) {
-        try {
-            $query = $pdo->prepare("UPDATE user SET username = $newUsername WHERE id_user = $idUser");
-            $query->execute();
-        
-            return true;
+    try {
+        $query = $pdo->prepare("UPDATE user SET username = :username WHERE id_user = :id_user");
+        $query->execute(['username' => $newUsername, 'id_user' => $idUser]);
     
-        } catch (PDOException $e) { return false; }
+        return true;
 
-    } else return false;
+    } catch (PDOException $e) { return false; }
 }
 
-function updateMailUser ($idUser, $newMail, $password) {
+function updateMailUser ($idUser, $newMail) {
     global $pdo;
 
-    if (password_verify(password_hash($password, PASSWORD_DEFAULT), $_SESSION['user']['password'])) {
-        try {
-            $query = $pdo->prepare("UPDATE user SET mail = $newMail WHERE id_user = $idUser");
-            $query->execute();
-        
-            return true;
+    try {
+        $query = $pdo->prepare("UPDATE user SET mail = :mail WHERE id_user = :id_user");
+        $query->execute(['mail' => $newMail, 'id_user' => $idUser]);
     
-        } catch (PDOException $e) { return false; }
+        return true;
 
-    } else return false;
+    } catch (PDOException $e) { return false; }
 }
 
-function updateBirthdayUser ($idUser, $newBirthday, $password) {
+function updateBirthdayUser ($idUser, $newBirthday) {
     global $pdo;
 
-    if (password_verify(password_hash($password, PASSWORD_DEFAULT), $_SESSION['user']['password'])) {
-        try {
-            $query = $pdo->prepare("UPDATE user SET birthday = $newBirthday WHERE id_user = $idUser");
-            $query->execute();
-        
-            return true;
+    try {
+        $query = $pdo->prepare("UPDATE user SET birthday = :birthday WHERE id_user = :id_user");
+        $query->execute(['birthday' => $newBirthday, 'id_user' => $idUser]);
     
-        } catch (PDOException $e) { return false; }
+        return true;
 
-    } else return false;
+    } catch (PDOException $e) { return false; }
 }
 
-function updateGenderUser ($idUser, $newGender, $password) {
+function updateGenderUser ($idUser, $newGender) {
     global $pdo;
 
-    if (password_verify(password_hash($password, PASSWORD_DEFAULT), $_SESSION['user']['password'])) {
-        try {
-            $query = $pdo->prepare("UPDATE user SET gender = $newGender WHERE id_user = $idUser");
-            $query->execute();
-        
-            return true;
+    try {
+        $query = $pdo->prepare("UPDATE user SET gender = :gender WHERE id_user = :id_user");
+        $query->execute(['gender' => $newGender, 'id_user' => $idUser]);
     
-        } catch (PDOException $e) { return false; }
+        return true;
 
-    } else return false;
+    } catch (PDOException $e) { return false; }
 }
 ?>
