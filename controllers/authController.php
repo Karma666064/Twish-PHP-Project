@@ -30,6 +30,5 @@ function showAuth () {
         showloginPage();
         echo '<p class="msg warning">Vous etes déjà connecter !</p>';
     }
-    showLoginPage();
 }
 ?>
