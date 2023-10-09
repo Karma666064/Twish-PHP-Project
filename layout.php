@@ -1,5 +1,3 @@
-<?php global $base_url; global $isConnected ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -8,7 +6,7 @@
 
         <!-- css -->
         <link rel="stylesheet" href="assets/css/style_global.css">
-        <link rel="stylesheet" href="assets/css/style_nav.css">
+        <?php if ($title != 'Login') echo '<link rel="stylesheet" href="assets/css/style_nav.css">' ?>
         <link rel="stylesheet" href="assets/css/style_error.css">
         <link rel="stylesheet" href="assets/<?= $css ?>">
 
@@ -23,20 +21,7 @@
     </head>
 
     <body>
-        <header>
-            <nav>
-                <h1>Twish</h1>
-
-                <ul>
-                    <li><a href="<?= $base_url ?>" <?php if ($title == 'Home') echo 'class="active-page"' ?>>Home</a></li>
-                    <?php if ($isConnected) { ?>
-                        <li><a href="<?= $base_url ?>?page=friend">Friend</a></li>
-                        <li><a href="<?= $base_url ?>?page=profile">Profile</a></li>
-                        <li><a href="<?= $base_url ?>?page=logout">Logout</a></li>
-                    <?php } else echo "<li><a href=\"$base_url?page=login\">Login</a></li>"; ?>
-                </ul>
-            </nav>
-        </header>
+        <?php if ($title != 'Login') echo showNavSprite(); ?>
 
         <?= $content ?>
     </body>
