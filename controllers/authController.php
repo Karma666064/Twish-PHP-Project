@@ -31,4 +31,10 @@ function showAuth () {
         echo '<p class="msg warning">Vous etes déjà connecter !</p>';
     }
 }
+
+function logout () {
+    global $base_url;
+    session_destroy();
+    header("location: $base_url");
+}
 ?>

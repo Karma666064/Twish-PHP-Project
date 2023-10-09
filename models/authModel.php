@@ -10,7 +10,7 @@ function login ($username, $password) {
         $user = $query->fetch();
     
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user'] = $user;
+            $_SESSION['user'] = $user; //Seesion user
             return true;
 
         } else return false;

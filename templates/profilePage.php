@@ -15,6 +15,8 @@ function showProfilePage() {
         <p class="mail">mail.random@gmail.com</p>
 
         <p class="birthday">25 / 11 / 2002</p>
+
+        <!-- Pouvoir modifier les infos -->
     </main>
 <?php 
     $content = ob_get_clean();

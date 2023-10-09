@@ -1,4 +1,4 @@
-<?php global $base_url; ?>
+<?php global $base_url; global $isConnected ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -29,13 +29,12 @@
 
                 <ul>
                     <li><a href="<?= $base_url ?>" <?php if ($title == 'Home') echo 'class="active-page"' ?>>Home</a></li>
-                    <?php
-                        if ($_SESSION) {
-                            echo "<li><a href=\"$base_url?page=profile\>Profile</a></li>";
-                            echo "<li><a href=\"$base_url?page=friend\>Friend</a></li>";
-                            
-                        } else echo "<li><a href=\"$base_url?page=login\">Login</a></li>";
-                    ?>
+                    <?php if ($isConnected) { ?>
+                        <li><a href="<?= $base_url ?>?page=friend">Friend</a></li>
+                        <li><a href="<?= $base_url ?>?page=profile">Profile</a></li>
+                        <li><a href="<?= $base_url ?>?page=logout">Logout</a></li>
+                    <?php } else echo "<li><a href=\"$base_url?page=login\">Login</a></li>"; ?>
+                    
                     
                 </ul>
             </nav>

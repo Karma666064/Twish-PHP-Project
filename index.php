@@ -11,6 +11,9 @@ if (isset($_GET['page'])) {
         case 'register':
             showAuth();
             break;
+        case 'logout':
+            logout();
+            break;
         case 'home':
             showHome();
             break;

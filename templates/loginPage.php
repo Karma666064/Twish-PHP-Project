@@ -22,7 +22,7 @@ function showLoginPage() {
 
                 <div>
                     <label for="password">Password</label>
-                    <input type="text" name="password" id="inputPassword">
+                    <input type="password" name="password" id="inputPassword">
                 </div>
 
                 <input type="hidden" name="formType" value="login-post">

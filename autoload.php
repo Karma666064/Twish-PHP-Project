@@ -3,7 +3,7 @@ session_start(); //Démarage de la session
 
 global $base_url; $base_url = "http://localhost/twish";
 
-$GLOBALS['isConnected'] = $_SESSION && $_SESSION['user'];
+global $isConnected; $isConnected = $_SESSION && $_SESSION['user'];
 
 require_once('models/databaseModel.php');
 require_once('models/authModel.php');
