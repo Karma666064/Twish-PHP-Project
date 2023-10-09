@@ -1,8 +1,9 @@
 <?php
 function showAuth () {
     global $base_url;
+    global $isConnected;
 
-    if (!$GLOBALS['isConnected']) {
+    if (!$isConnected) {
         // Si formtype = login-post
         if ($_POST && $_POST['formType'] == 'login-post' && $_POST['username'] && $_POST['password']) {
             $connected = login($_POST['username'], $_POST['password']);
