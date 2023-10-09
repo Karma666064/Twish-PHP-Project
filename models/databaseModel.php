@@ -2,7 +2,7 @@
 global $pdo;
 
 $host = 'localhost';
-$dbName = 'music_market';
+$dbName = 'twish';
 $username = 'root';
 $password = '';
 

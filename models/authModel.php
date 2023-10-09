@@ -20,18 +20,18 @@ function login ($username, $password) {
 
 function register ($gender, $username, $mail, $birthday, $password) {
     global $pdo;
-
-    $text = "INSERT INTO user (gender, username, mail, password) VALUES (:gender, :username, :mail, :password)";
-    $arr = [
-        'gender' => $gender,
-        'username' => $username,
-        'mail' => $mail,
-        'password' => password_hash($password, PASSWORD_DEFAULT)
-    ];
     
     if ($birthday) {
         $arr['birthday'] = $birthday;
         $text = "INSERT INTO user (gender, username, mail, birthday, password) VALUES (:gender, :username, :mail, :birthday, :password)";
+    } else {
+        $text = "INSERT INTO user (gender, username, mail, password) VALUES (:gender, :username, :mail, :password)";
+        $arr = [
+            'gender' => $gender,
+            'username' => $username,
+            'mail' => $mail,
+            'password' => password_hash($password, PASSWORD_DEFAULT)
+        ];
     }
 
     try {
