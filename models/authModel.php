@@ -22,8 +22,15 @@ function register ($gender, $username, $mail, $birthday, $password) {
     global $pdo;
     
     if ($birthday) {
-        $arr['birthday'] = $birthday;
         $text = "INSERT INTO user (gender, username, mail, birthday, password) VALUES (:gender, :username, :mail, :birthday, :password)";
+        $arr = [
+            'gender' => $gender,
+            'username' => $username,
+            'mail' => $mail,
+            'birthday' => $birthday,
+            'password' => password_hash($password, PASSWORD_DEFAULT)
+        ];
+        print_r('if');
     } else {
         $text = "INSERT INTO user (gender, username, mail, password) VALUES (:gender, :username, :mail, :password)";
         $arr = [
@@ -32,11 +39,13 @@ function register ($gender, $username, $mail, $birthday, $password) {
             'mail' => $mail,
             'password' => password_hash($password, PASSWORD_DEFAULT)
         ];
+        print_r('else');
     }
 
     try {
         $query = $pdo->prepare($text);
         $query->execute($arr);
+        print_r('try');
     
         return true;
 

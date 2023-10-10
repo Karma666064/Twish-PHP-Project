@@ -16,9 +16,8 @@ function showAuth () {
             }
         // Si formtype = register-post
         } elseif ($_POST && $_POST['formType'] == 'register-post' && $_POST['gender'] && $_POST['username'] && $_POST['mail'] && $_POST['password']) {
-            $registered = register($_POST['gender'], $_POST['username'], $_POST['mail'], false, $_POST['password']);
-
             if (isset($_POST['birthday'])) $registered = register($_POST['gender'], $_POST['username'], $_POST['mail'], $_POST['birthday'], $_POST['password']);
+            else $registered = register($_POST['gender'], $_POST['username'], $_POST['mail'], false, $_POST['password']);
     
             if ($registered) header("location: $base_url?page=login");
             else {
