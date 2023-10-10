@@ -11,8 +11,7 @@ function showProfile () {
             if ($verifPassword && $_POST['username']) updateUsernameUser($_SESSION['user']['id_user'], $_POST['username']);
             if ($verifPassword && $_POST['mail']) updateMailUser($_SESSION['user']['id_user'], $_POST['mail']);
             if ($verifPassword && $_POST['birthday']) updateBirthdayUser($_SESSION['user']['id_user'], $_POST['birthday']);
-            if ($verifPassword && $_POST['gender']) updateGenderUser($_SESSION['user']['id_user'], $_POST['gender']);
-            else echo('error');
+            if ($verifPassword && $_POST['gender'] && $_POST['gender'] != 'Default') updateGenderUser($_SESSION['user']['id_user'], $_POST['gender']);
 
             showProfilePage();
         } else showProfilePage();

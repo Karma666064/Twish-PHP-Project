@@ -28,6 +28,11 @@ function showProfilePage() {
                     <p>Gender</p>
 
                     <div>
+                        <label for="genderDefault">Default</label>
+                        <input type="radio" name="gender" id="inputGenderDefault" value="Default" checked>
+                    </div>
+
+                    <div>
                         <label for="genderMan">Man</label>
                         <input type="radio" name="gender" id="inputGenderMan" value="Man">
                     </div>
