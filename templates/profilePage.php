@@ -11,13 +11,26 @@ function showProfilePage() {
         <div class="see-info">
             <h2>Profile</h2>
     
-            <p class="username">Username</p>
+            <p class="username"><?= $_SESSION['user']['username'] ?></p>
     
-            <p class="mail">mail.random@gmail.com</p>
+            <p class="mail"><?= $_SESSION['user']['mail'] ?></p>
     
-            <p class="birthday">25 / 11 / 2002</p>
+            <p class="birthday"><?= date('d F Y', strtotime($_SESSION['user']['birthday'])); ?></p>
     
             <button id="btnModify">Modify</button>
+        </div>
+
+        <div class="create-post">
+            <h2>Create a post</h2>
+
+            <form method="post">
+                <div>
+                    <label for="textarea">Text</label>
+                    <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
+                </div>
+
+                <input type="submit" value="Create">
+            </form>
         </div>
 
         <div class="modify-info">
