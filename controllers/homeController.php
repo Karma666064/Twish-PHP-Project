@@ -1,12 +1,22 @@
 <?php
-// function showCardsAlbums () {
-//     if (albums()) {
-//         foreach (albums() as $album) {
-//             echo cardAlbum($album['id_album'], $album['id_artist'], $album['id_music'], $album['name'], $album['price']);
-//         }
-//     }
-// }
+function showPosts () {
+    if (dataPosts() && count(dataPosts()) > 0) {
+        foreach (dataPosts() as $post) echo showPostSprite($post);
 
+    } else echo '<p>Aucun post pour le moment</p>';
+}
 
 // Affiche la page home
-function showHome () { showHomePage(); }
+function showHome () {
+    global $isConnected;
+
+    if ($isConnected) {
+        if ($_POST && $_POST['formType'] == 'createPost' && $_POST['textarea']) {
+            $createdPost = createPost($_SESSION['user']['id_user'], $_POST['textarea']);
+
+            if (!$createdPost) echo '<p class="msg error">Une erreur est survenu lors de la création du post !</p>';
+        }
+    }
+
+    showHomePage();
+}

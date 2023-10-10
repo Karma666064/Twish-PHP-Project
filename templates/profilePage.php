@@ -20,19 +20,6 @@ function showProfilePage() {
             <button id="btnModify">Modify</button>
         </div>
 
-        <div class="create-post">
-            <h2>Create a post</h2>
-
-            <form method="post">
-                <div>
-                    <label for="textarea">Text</label>
-                    <textarea name="textarea" id="textarea" cols="30" rows="10"></textarea>
-                </div>
-
-                <input type="submit" value="Create">
-            </form>
-        </div>
-
         <div class="modify-info">
             <h2>Modify informations</h2>
     

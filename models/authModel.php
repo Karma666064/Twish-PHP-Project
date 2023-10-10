@@ -1,6 +1,6 @@
 <?php
 
-function login ($username, $password) {
+function login ($username, $password): bool {
     global $pdo;
 
     try {
@@ -15,10 +15,10 @@ function login ($username, $password) {
 
         } else return false;
 
-    } catch (PDOException $e) { return false; }
+    } catch (PDOException $e) { echo($e); return false; }
 }
 
-function register ($gender, $username, $mail, $birthday, $password) {
+function register ($gender, $username, $mail, $birthday, $password): bool {
     global $pdo;
     
     if ($birthday) {
@@ -30,7 +30,6 @@ function register ($gender, $username, $mail, $birthday, $password) {
             'birthday' => $birthday,
             'password' => password_hash($password, PASSWORD_DEFAULT)
         ];
-        print_r('if');
     } else {
         $text = "INSERT INTO user (gender, username, mail, password) VALUES (:gender, :username, :mail, :password)";
         $arr = [
@@ -39,17 +38,15 @@ function register ($gender, $username, $mail, $birthday, $password) {
             'mail' => $mail,
             'password' => password_hash($password, PASSWORD_DEFAULT)
         ];
-        print_r('else');
     }
 
     try {
         $query = $pdo->prepare($text);
         $query->execute($arr);
-        print_r('try');
     
         return true;
 
-    } catch (PDOException $e) { return false; }
+    } catch (PDOException $e) { echo($e); return false; }
 }
 
 ?>

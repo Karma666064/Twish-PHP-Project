@@ -1,9 +1,10 @@
-<?php function showPostSprite() { ob_start(); ?>
+<?php function showPostSprite($postData) { ob_start(); ?>
 
     <div class="post">
-        <h2>Post title <span class="author">Auteur</span> <span class="pub-date">Publier le 25 / 11 / 2002</span></h2>
+        <p class="author">Author : <?= $postData['username']; ?></p>
+        <p class="pub-date">Publier le <?= $postData['creation_date']; ?></p>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quia labore doloremque inventore, quos sequi dolorum consequatur dicta tempora! Deleniti.</p>
+        <p class="text"><?= $postData['text']; ?></p>
     </div>
 
 <?php return ob_get_clean(); } ?>
