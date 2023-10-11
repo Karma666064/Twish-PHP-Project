@@ -1,16 +1,12 @@
 <?php
-function showLoginPage() {
+function showLoginPage($activate) {
     $title = 'Login';
     $css = 'css/style_login.css';
     $js = 'js/switch_form.js';
 
-    // Celon la page login ou register sa va afficher le form login ou register en changant la class
-    $class = 'login';
-    if (isset($_GET['page']) && $_GET['page'] == 'register') $class = 'register';
-
     ob_start();
 ?>
-    <main id="main" class="<?= $class ?>-active">
+    <main id="main" class="<?= $activate ?>-active">
         <section class="login">
             <h2>Login</h2>
 

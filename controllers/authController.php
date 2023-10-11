@@ -1,5 +1,5 @@
 <?php
-function showAuth () {
+function showAuth ($activate) {
     global $base_url;
     global $isConnected;
 
@@ -10,7 +10,7 @@ function showAuth () {
             
             if ($connected) header("Location: $base_url");
             else {
-                showloginPage();
+                showloginPage($activate);
     
                 echo '<p class="msg error">Mauvais identifiant !</p>';
             }
@@ -24,10 +24,10 @@ function showAuth () {
                 header("location: $base_url?page=register");
                 echo '<p class="msg error">Une erreur est survenu lors !</p>';
             }
-        } else showloginPage();
+        } else showloginPage($activate);
 
     } else {
-        showloginPage();
+        showloginPage($activate);
         echo '<p class="msg warning">Vous etes déjà connecter !</p>';
     }
 }
@@ -35,6 +35,6 @@ function showAuth () {
 function logout () {
     global $base_url;
     session_destroy();
-    header("location: $base_url");
+    header("location: $base_url?page=login");
 }
 ?>
