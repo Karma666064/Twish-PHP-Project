@@ -1,6 +1,24 @@
-<?php function showPostSprite($postData) { ob_start(); ?>
+<?php function showPostSprite($postData) {
+    global $isConnected;
+    
+    if ($isConnected) {
+        $datalike = dataLike($_SESSION['user']['id_user'], $postData['id_post']);
+
+        if (count($datalike) > 0 && $datalike[0]['liked']) {
+            $action = 'remove';
+            $heart = 'sr-heart';
+        } elseif (count($datalike) < 1 || !$datalike[0]['liked']) {
+            $action = 'add';
+            $heart = 'rr-heart';
+        }
+    }
+
+    ob_start();
+?>
 
     <div class="post">
+        <a href="?page=like&action=<?= $action ?>&id_status=<?= $postData['id_post'] ?>"><i class="fi fi-<?= $heart ?>"></i></a>
+
         <p class="author">Author : <span><?= $postData['username']; ?></span></p>
         <p class="pub-date">Publier le <span><?= $postData['creation_date']; ?></span></p>
 

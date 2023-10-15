@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="assets/<?= $css ?>">
 
         <!-- Flaticon links -->
-        <!-- <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-straight/css/uicons-solid-straight.css'> -->
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
         
         <!-- Appel le fichier js si on est sur la page login -->
         <?php if ($js) echo '<script src="assets/'. $js .'" defer></script>' ?>

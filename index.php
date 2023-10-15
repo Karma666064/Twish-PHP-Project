@@ -23,6 +23,9 @@ if (isset($_GET['page'])) { //http://localhost/twish?page=login
         case 'friend':
             showFriend();
             break;
+        case 'like':
+            likeController();
+            break;
         default:
             showHome();
             break;
