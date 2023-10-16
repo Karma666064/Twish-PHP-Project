@@ -1,4 +1,16 @@
 <?php
+function users () {
+    global $pdo;
+
+    try {
+        $query = $pdo->prepare("SELECT * FROM user");
+        $query->execute();
+    
+        return $query->fetchAll();
+
+    } catch (PDOException $e) { echo($e); return false; }
+}
+
 function updateUsernameUser ($idUser, $newUsername) {
     global $pdo;
 
