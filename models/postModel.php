@@ -86,9 +86,8 @@ function dataLike ($idUser, $idPost) {
     try {
         $query = $pdo->prepare("SELECT * FROM likes WHERE id_user = :id_user AND id_post = :id_post");
         $query->execute(['id_user' => $idUser, 'id_post' => $idPost]);
-        $liked = $query->fetchAll();
-    
-        return $liked;
+        return $query->fetchAll();
+
     } catch (PDOException $e) { echo($e); return false; }
 }
 ?>
