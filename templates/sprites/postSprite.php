@@ -11,7 +11,7 @@
             $action = 'add';
             $heart = 'rr-heart';
         }
-    }
+    } else $action = 'none'; $heart = 'rr-heart';
 
     ob_start();
 ?>

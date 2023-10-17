@@ -4,14 +4,10 @@ function friendUsers () {
 
     try {
         $query = $pdo->prepare(
-            "SELECT user.* FROM user
-            WHERE user.id_user != :id_user
-            AND user.id_user not in
-                (SELECT friend.id_user_friend from friend
-                WHERE friend.id_user = :id_user)
-            AND user.id_user not in
-                (SELECT friend.id_user from friend
-                WHERE friend.id_user_friend = :id_user);"
+            "SELECT user.* FROM user WHERE user.id_user != :id_user
+            AND (user.id_user not in (SELECT friend.id_user_friend from friend WHERE friend.id_user = :id_user)
+                AND user.id_user not in (SELECT friend.id_user from friend WHERE friend.id_user_friend = :id_user)) 
+            OR user.id_user in (SELECT friend.id_user from friend WHERE friend.requested = 'remove')"
         );
         $query->execute(['id_user' => $_SESSION['user']['id_user']]);
     
@@ -23,27 +19,11 @@ function friendUsers () {
 function friendResquestAdd ($idFriend) {
     global $pdo;
 
-    $idUser = $_SESSION['user']['id_user'];
-
     try {
-        if (count(friendDataById($idUser, $idFriend)) < 1 || friendDataById($idFriend, $idUser) < 1 ) {
-            $query = $pdo->prepare("INSERT INTO friend (id_user, id_user_friend, requested) VALUES (:id_user, :id_user_friend, :requested)");
-            $query->execute(['id_user' => $idUser, 'id_user_friend' => $idFriend, 'requested' => 'send']);
-        
-            return true;
+        $query = $pdo->prepare("INSERT INTO friend (id_user, id_user_friend, requested) VALUES (:id_user, :id_user_friend, :requested)");
+        $query->execute(['id_user' => $_SESSION['user']['id_user'], 'id_user_friend' => $idFriend, 'requested' => 'send']);
     
-        } else {
-            $query = $pdo->prepare(
-            "UPDATE friend SET requested = :requested
-                WHERE (id_user = :id_user
-                    AND id_user_friend = :id_user_friend)
-                OR (id_user = :id_user2
-                    AND id_user_friend = :id_user_friend2)"
-            );
-            $query->execute(['requested' => 'send', 'id_user' => $idUser, 'id_user_friend' => $_SESSION['user']['id_user'],'id_user2' => $_SESSION['user']['id_user'], 'id_user_friend2' => $idUser]);
-        
-            return true;
-        }
+        return true;
     } catch (PDOException $e) { echo($e); return false; }
 }
 
@@ -63,15 +43,13 @@ function friendRemove ($idUser) {
     global $pdo;
 
     try {
-        
         $query = $pdo->prepare(
-            "UPDATE friend SET requested = :requested
-            WHERE (id_user = :id_user
-                AND id_user_friend = :id_user_friend)
-            OR (id_user = :id_user2
-                AND id_user_friend = :id_user_friend2)"
+            "DELETE FROM friend WHERE
+                (id_user = :id_user AND id_user_friend = :id_user_friend)
+            OR
+                (id_user = :id_user2 AND id_user_friend = :id_user_friend2)"
         );
-        $query->execute(['requested' => 'remove', 'id_user' => $idUser, 'id_user_friend' => $_SESSION['user']['id_user'],'id_user2' => $_SESSION['user']['id_user'], 'id_user_friend2' => $idUser]);
+        $query->execute(['id_user' => $idUser, 'id_user_friend' => $_SESSION['user']['id_user'],'id_user2' => $_SESSION['user']['id_user'], 'id_user_friend2' => $idUser]);
     
         return true;
     } catch (PDOException $e) { echo($e); return false; }

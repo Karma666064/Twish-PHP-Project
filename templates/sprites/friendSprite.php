@@ -3,8 +3,11 @@
     if ($dataFriend['id_user1'] == $_SESSION['user']['id_user']) {
         $idUser = $dataFriend['id_user2'];
         $username = $dataFriend['username2'];
-
-    } else $idUser = $dataFriend['id_user1']; $username = $dataFriend['username1'];
+        
+    } elseif ($dataFriend['id_user2'] == $_SESSION['user']['id_user']) {
+        $idUser = $dataFriend['id_user1'];
+        $username = $dataFriend['username1'];
+    }
     ob_start();
 ?>
 <div class="friend">
